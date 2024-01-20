@@ -3,7 +3,8 @@
 #Host forwarding: Host Port 10022 ->> QEMU Port 22 
 #Author: Siddhant Jajoo.
 
-
+# Use ssh -p 10022 root@localhost to connect to the QEMU session
+# Use scp -P 10022 root@localhost:/ (from the host, I could not make it work from QEMU)
 qemu-system-aarch64 \
     -M virt  \
     -cpu cortex-a53 -nographic -smp 1 \
