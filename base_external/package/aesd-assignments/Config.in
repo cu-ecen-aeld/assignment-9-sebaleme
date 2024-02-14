@@ -4,3 +4,26 @@ config BR2_PACKAGE_AESD_ASSIGNMENTS
 	help
 	  Includes the writer executable, finder.sh and tester.sh in the kernel image.
 	  Used to understand buildroot external trees and package builds.
+
+config BR2_PACKAGE_GDB
+	bool "gdb"
+	# When the external toolchain gdbserver is copied to the
+	# target, we don't allow building a separate gdbserver. The
+	# one from the external toolchain should be used.
+
+config BR2_PACKAGE_GDB_ARCH_SUPPORTS
+	bool
+	default y
+
+config BR2_PACKAGE_GDB_SERVER
+	bool "gdbserver"
+	help
+	  Build the gdbserver stub to run on the target.
+	  A full gdb is needed to debug the progam.
+
+config BR2_PACKAGE_HOST_GDB
+	bool "Build cross gdb for the host"
+	# When the external toolchain gdbserver is used, we shouldn't
+	# allow to build a cross-gdb, as the one of the external
+	# toolchain should be used.
+	help
