@@ -8,7 +8,7 @@
 # Adding assignment-7 content
 # Read https://www.kernel.org/doc/html/v5.6/kbuild/modules.html for learning how to build a kernel module
 $(info    Building LDD repo packages...)
-LDD_VERSION = e712a1f17c55bbbc22d775f584bc4ad239c1d2ea
+LDD_VERSION = b259454171be6fcc8b096e5e36de57c4ba6845f5
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
