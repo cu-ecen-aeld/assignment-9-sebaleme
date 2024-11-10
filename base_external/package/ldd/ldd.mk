@@ -24,15 +24,14 @@ LDD_MODULE_MAKE_OPTS = KERNELDIR=$(LINUX_DIR)
 # The -m option sets the mode (access-control bits) of the installed object(s)
 # The -d option specifies that the names are directories
 define LDD_INSTALL_TARGET_CMDS
-	$(INSTALL) -d 0755 $(@D)/conf/ $(TARGET_DIR)/usr/bin/conf/
-	$(INSTALL) -m 0755 $(@D)/conf/* $(TARGET_DIR)/usr/bin/conf/
-	$(INSTALL) -m 0755 $(@D)/assignment-autotest/test/assignment5/* $(TARGET_DIR)/bin
-	$(INSTALL) -m 0755 $(@D)/misc-modules/writer $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/misc-modules/finder.sh $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/misc-modules/finder-test.sh $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/misc-modules/autorun-qemu.sh $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/skull/aesdsocket $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/skull/aesdsocket-start-stop $(TARGET_DIR)/etc/init.d/S98lddmodules
+	$(INSTALL) -m 0755 $(@D)/assignment-autotest/test/assignment7-buildroot/* $(TARGET_DIR)/bin
+	$(INSTALL) -m 0755 $(@D)/misc-modules/module_load $(TARGET_DIR)/usr/bin/
+	$(INSTALL) -m 0755 $(@D)/misc-modules/module_unload $(TARGET_DIR)/usr/bin/
+	$(INSTALL) -m 0755 $(@D)/misc-modules/faulty.ko $(TARGET_DIR)/usr/bin/
+	$(INSTALL) -m 0755 $(@D)/misc-modules/sleepy.ko $(TARGET_DIR)/usr/bin/
+	$(INSTALL) -m 0755 $(@D)/skull/scull.ko $(TARGET_DIR)/usr/bin/
+	$(INSTALL) -m 0755 $(@D)/skull/module_load $(TARGET_DIR)/usr/bin/
+	$(INSTALL) -m 0755 $(@D)/skull/module_unload $(TARGET_DIR)/etc/init.d/S98lddmodules
 endef
 
 $(eval $(generic-package), LDD)
