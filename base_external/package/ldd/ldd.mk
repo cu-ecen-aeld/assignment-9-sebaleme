@@ -18,21 +18,24 @@ LDD_GIT_SUBMODULES = YES
 LDD_MODULE_SUBDIRS = scull/
 LDD_MODULE_SUBDIRS += misc-modules/
 
-LDD_MODULE_MAKE_OPTS = KERNELDIR=$(LINUX_DIR)
+#LDD_MODULE_MAKE_OPTS = KERNELDIR=$(LINUX_DIR)
 
 # TODO add your writer, finder and finder-test utilities/scripts to the installation steps below
 # The -m option sets the mode (access-control bits) of the installed object(s)
 # The -d option specifies that the names are directories
+# @D designs the external package folder, here buildroot/output/build/ldd-e712a1f17c55bbbc22d775f584bc4ad239c1d2ea
+# Cannot install UT since repo7 does not contain them
 define LDD_INSTALL_TARGET_CMDS
-	$(INSTALL) -m 0755 $(@D)/assignment-autotest/test/assignment7-buildroot/* $(TARGET_DIR)/bin
-	$(INSTALL) -m 0755 $(@D)/misc-modules/module_load $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/misc-modules/module_unload $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/misc-modules/faulty.ko $(TARGET_DIR)/usr/bin/
+    $(INSTALL) -m 0755 $(@D)/misc-modules/module_load $(TARGET_DIR)/usr/bin/
+    $(INSTALL) -m 0755 $(@D)/misc-modules/module_unload $(TARGET_DIR)/usr/bin/
+    $(INSTALL) -m 0755 $(@D)/misc-modules/faulty.ko $(TARGET_DIR)/usr/bin/
 	$(INSTALL) -m 0755 $(@D)/misc-modules/sleepy.ko $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/skull/scull.ko $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/skull/module_load $(TARGET_DIR)/usr/bin/
-	$(INSTALL) -m 0755 $(@D)/skull/module_unload $(TARGET_DIR)/etc/init.d/S98lddmodules
+	$(INSTALL) -m 0755 $(@D)/misc-modules/hello.ko $(TARGET_DIR)/usr/bin/
+	$(INSTALL) -m 0755 $(@D)/scull/scull.ko $(TARGET_DIR)/usr/bin/
+	$(INSTALL) -m 0755 $(@D)/scull/scull_load $(TARGET_DIR)/usr/bin/
+	$(INSTALL) -m 0755 $(@D)/scull/scull_unload $(TARGET_DIR)/usr/bin/
 endef
 
-$(eval $(generic-package), LDD)
+$(eval $(generic-package))
+$(eval $(kernel-module))
 $(info    End of LDD build...)
