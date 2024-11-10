@@ -1,6 +1,7 @@
 
 config BR2_PACKAGE_LDD
 	bool "ldd"
+	depends on BR2_LINUX_KERNEL  # Ensure that the Linux kernel is enabled
 	help
 	  Includes the the misc-modules and scull components in the kernel image.
 	  Used to understand buildroot external trees and package builds.
